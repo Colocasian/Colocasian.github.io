@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8" />
     <title>Hello World!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript">
+        function fib(num) {
+            if (num < 0)
+                return -1
+            else if (num > 46)
+                return Infinity
+
+            var temp = [1, 0]
+            for (var i = 0; i < num; i++) {
+                var tmp = temp[1]
+                temp[1] += temp[0]
+                temp[0] = tmp
+            }
+            return temp[1]
+        }
+
+        function updateAnswer() {
+            var x = escape(document.getElementById('fib-calc').elements[0].value)
+            if (x.length != 0) {
+                if (isFinite(fib(x)))
+                    alert(fib(x))
+                else
+                    alert('Fibonacci number bigger than that storable in JavaScript')
+            }
+        }
+    </script>
 </head>
+
 <body>
     Hello World!
     (Just to know that Github updated the site&comma; I added this message)
+
+    <form id="fib-calc">
+        <h3>Fibonacci calculator</h3>
+        <p>
+            Fibonacci number index: <input type="number" />
+            <button onclick="updateAnswer()">Calculate</button><br>
+        </p>
+    </form>
 </body>
 </html>
