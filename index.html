@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <title>Hello World!</title>
@@ -30,6 +31,7 @@
             }
         }
     </script>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -38,7 +40,8 @@
     <form id="fib-calc">
         <h3>Fibonacci calculator</h3>
         <p>
-            Fibonacci number index: <input type="number" />
+            <label>Fibonacci number index</label>
+            <input type="number" placeholder="0 - 46" />
             <button onclick="updateAnswer()">Calculate</button><br>
         </p>
     </form>
@@ -46,4 +49,5 @@
         Here's a <a href="./blogpage.html">link</a> to my 'blogpage'.
     </p>
 </body>
+
 </html>
