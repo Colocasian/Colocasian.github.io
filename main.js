@@ -2,6 +2,7 @@
  * Method to add two string-representation of numbers to create another string-number
  * @param {string} num1 first number to add
  * @param {string} num2 second number to add
+ * @returns {string} the string representation of sum
  */
 function adds(num1, num2) {
     if (isNaN(num1) || isNaN(num2))
@@ -33,6 +34,7 @@ function adds(num1, num2) {
 /**
  * Method that uses the adds() method to generate big fibonacci numbers
  * @param {number} num the index of the Fibonacci number
+ * @returns {string} the string representation of the fibonacci number(reversed)
  */
 function fibLar(num) {
     if (num < 0)
