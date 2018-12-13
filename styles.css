@@ -23,6 +23,12 @@ h6 {
     color: dodgerblue;
 }
 
+.sub-title {
+    padding-top: 1.5%;
+    color: slateblue;
+    text-indent: 1%;
+}
+
 p {
     line-height: 1.5;
 }
@@ -30,4 +36,9 @@ p {
 abbr,
 a {
     text-decoration: none;
+}
+
+blockquote {
+    border: 3px coral solid;
+    padding: 2%;
 }
