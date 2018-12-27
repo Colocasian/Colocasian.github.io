@@ -39,16 +39,6 @@ class Planet {
         this.y_p = tmpy
     }
 
-    refresh(b2) {
-        var accel = this.acc(b2)
-        var tmpx = this.x
-        var tmpy = this.y
-        this.x_temp = 2 * this.x - this.x_p + accel[0] / (REP * REP)
-        this.y_temp = 2 * this.y - this.y_p + accel[1] / (REP * REP)
-        this.x_p_temp = tmpx
-        this.y_p_temp = tmpy
-    }
-
     output() {
         ellipse(this.x, this.y, 5 * Math.pow(this.m, 1/3), 5 * Math.pow(this.m, 1/3))
     }
@@ -91,6 +81,9 @@ let body3 = new Planet(10, -80, 0, 0, -10)
 // Description of body 4
 let body4 = new Planet(10, 0, 80, -10, 0)
 
+// Description of body 5
+// let body5 = new Planet(10, 0, -80, 5, 0)
+
 
 function setup() {
     frameRate(FPS)
@@ -106,11 +99,11 @@ function draw() {
 
     solar.addPlanet(body1) // Rest
     solar.addPlanet(body3) // of
-    solar.addPlanet(body4) // the Planets
+    solar.addPlanet(body4) // the
+    // solar.addPlanet(body5) // Planets
 
     for (var i = 0; i < FASTER * MULT; i++)
         solar.refresh()
 
     solar.output()
 }
-
