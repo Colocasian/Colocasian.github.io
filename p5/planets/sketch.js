@@ -1,5 +1,5 @@
 let FPS = 60
-let MULT = 1000
+let MULT = 250
 let REP = MULT * FPS
 let FASTER = 3
 let G = 10
