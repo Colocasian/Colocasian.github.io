@@ -73,7 +73,7 @@ class SystemOfPlanets {
 let body1 = new Planet(10, 80, 0, 0, 10)
 
 // Description of body 2
-let body2 = new Planet(1000, 0, 0, 0.1, 0)
+let body2 = new Planet(1000, 0, 0, 0, 0)
 
 // Description of body 3
 let body3 = new Planet(10, -80, 0, 0, -10)
@@ -82,7 +82,7 @@ let body3 = new Planet(10, -80, 0, 0, -10)
 let body4 = new Planet(10, 0, 80, -10, 0)
 
 // Description of body 5
-// let body5 = new Planet(10, 0, -80, 5, 0)
+let body5 = new Planet(10, 0, -80, 10, 0)
 
 
 function setup() {
@@ -100,7 +100,7 @@ function draw() {
     solar.addPlanet(body1) // Rest
     solar.addPlanet(body3) // of
     solar.addPlanet(body4) // the
-    // solar.addPlanet(body5) // Planets
+    solar.addPlanet(body5) // Planets
 
     for (var i = 0; i < FASTER * MULT; i++)
         solar.refresh()
