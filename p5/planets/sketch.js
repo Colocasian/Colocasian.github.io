@@ -1,5 +1,5 @@
 const FPS = 60;
-const MULT = 1 / 500;
+const MULT = 1 / 1000;
 const REP = MULT * FPS;
 const FASTER = 86400 * 10;
 const G = 6.67408e-11;
@@ -29,6 +29,7 @@ class Planet {
         this.cr = cr;
         this.cg = cg;
         this.cb = cb;
+        this.history = [];
     }
 
     /**
@@ -77,8 +78,19 @@ class Planet {
      * @access public
      */
     output() {
+        var store = 50;
         fill(this.cr, this.cg, this.cb);
-        ellipse(this.x / 2.492e11 * 360, this.y / 2.492e11 * 360, this.r, this.r);
+        // ellipse(this.x / 2.492e11 * 360, this.y / 2.492e11 * 360, this.r, this.r);
+        this.history.unshift([this.x / 2.492e11 * 360, this.y / 2.492e11 * 360]);
+        if (this.history.length > store)
+            this.history.pop();
+
+        for (var i = this.history.length - 1; i >= 0; i--) {
+            var bufr = 20;
+            fill((this.cr - bufr) * (store - i) / store + bufr, (this.cg - bufr) * (store - i) / store + bufr, (this.cb - bufr) * (store - i) / store + bufr);
+            var loc = this.history[i];
+            ellipse(loc[0], loc[1], this.r, this.r);
+        }
     }
 }
 
@@ -154,7 +166,7 @@ function setup() {
 }
 
 function draw() {
-    background(0, 0, 0, 7);
+    background(0, 0, 0, 50);
     translate(640, 360);
 
     var solar = new SystemOfPlanets();
