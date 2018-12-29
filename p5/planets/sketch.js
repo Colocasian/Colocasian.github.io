@@ -154,7 +154,7 @@ function setup() {
 }
 
 function draw() {
-    background(0, 0, 0, 25);
+    background(0, 0, 0, 7);
     translate(640, 360);
 
     var solar = new SystemOfPlanets();
