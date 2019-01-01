@@ -9,7 +9,7 @@ class Planet {
     /**
      * @constructor
      * @param {number} m Mass of the planet
-     * @param {nember} x Initial x-coordinate of planet
+     * @param {number} x Initial x-coordinate of planet
      * @param {number} y Initial y-coordinate of planet
      * @param {number} init_vx Initial x-velocity of planet
      * @param {number} init_vy Initial y-velocity of planet
@@ -156,6 +156,9 @@ let body4 = new Planet(3.285e23, 6.98169e10, 0, 0, 3.886e4, 3.83, 226, 226, 226)
 // Description of body 5
 let body5 = new Planet(6.39e23, 2.492e11, 0, 0, 2.2e4, 5.32, 161, 37, 27); // Mars
 
+// Description of body 6
+let body6 = new Planet(2.2e14, -8.766e10, 0, 0, 5.458e4, 2, 255, 255, 255); // Halley's comet
+
 
 function setup() {
     frameRate(FPS);
@@ -176,6 +179,8 @@ function draw() {
     solar.addPlanet(body3); // of
     solar.addPlanet(body4); // the
     solar.addPlanet(body5); // Planets
+
+    solar.addPlanet(body6); // Halley's comet
 
     for (var i = 0; i < FASTER * MULT; i++)
         solar.refresh();
