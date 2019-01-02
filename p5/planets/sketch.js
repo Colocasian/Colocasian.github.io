@@ -4,6 +4,7 @@ const REP = MULT * FPS;
 const FASTER = 86400 * 10;
 const G = 6.67408e-11;
 
+
 /** Class representing a planet */
 class Planet {
     /**
@@ -39,12 +40,12 @@ class Planet {
      * @returns The acceleration vector wrt other planet
      */
     acc(b2) {
-        var xDir = b2.x - this.x,
+        let xDir = b2.x - this.x,
             yDir = b2.y - this.y;
-        var num = xDir * xDir + yDir * yDir;
+        let num = xDir * xDir + yDir * yDir;
 
-        var a_mod = G * b2.m / num;
-        return [(xDir / sqrt(num) * a_mod), (yDir / sqrt(num) * a_mod)];
+        let a_mod = G * b2.m / num;
+        return [(xDir / Math.sqrt(num) * a_mod), (yDir / Math.sqrt(num) * a_mod)];
     }
 
     /**
@@ -53,7 +54,7 @@ class Planet {
      * @param {Planet} b2 The planet w.r.t. we need acceleration
      */
     addAccel(b2) {
-        var accAdd = this.acc(b2);
+        let accAdd = this.acc(b2);
         this.netAcc[0] += accAdd[0];
         this.netAcc[1] += accAdd[1];
     }
@@ -63,10 +64,10 @@ class Planet {
      * @access protected
      */
     refreshNew() {
-        var accel = this.netAcc;
+        let accel = this.netAcc;
         this.netAcc = [0, 0];
-        var tmpx = this.x;
-        var tmpy = this.y;
+        let tmpx = this.x;
+        let tmpy = this.y;
         this.x = 2 * this.x - this.x_p + accel[0] / (REP * REP);
         this.y = 2 * this.y - this.y_p + accel[1] / (REP * REP);
         this.x_p = tmpx;
@@ -78,17 +79,17 @@ class Planet {
      * @access public
      */
     output() {
-        var store = 50;
+        let store = 50;
         fill(this.cr, this.cg, this.cb);
         // ellipse(this.x / 2.492e11 * 360, this.y / 2.492e11 * 360, this.r, this.r);
         this.history.unshift([this.x / 2.492e11 * 360, this.y / 2.492e11 * 360]);
         if (this.history.length > store)
             this.history.pop();
 
-        for (var i = this.history.length - 1; i >= 0; i--) {
-            var bufr = 20;
+        for (let i = this.history.length - 1; i >= 0; i--) {
+            let bufr = 20;
             fill((this.cr - bufr) * (store - i) / store + bufr, (this.cg - bufr) * (store - i) / store + bufr, (this.cb - bufr) * (store - i) / store + bufr);
-            var loc = this.history[i];
+            let loc = this.history[i];
             ellipse(loc[0], loc[1], this.r, this.r);
         }
     }
@@ -118,16 +119,16 @@ class SystemOfPlanets {
      * @access public
      */
     refresh() {
-        for (var i = 0; i < this.planets.length; i++) {
-            for (var j = 0; j < this.planets.length; j++) {
+        for (let i = 0; i < this.planets.length; i++) {
+            for (let j = 0; j < this.planets.length; j++) {
                 if (j == i)
                     continue;
                 this.planets[i].addAccel(this.planets[j]);
             }
         }
 
-        for (var i = 0; i < this.planets.length; i++)
-            this.planets[i].refreshNew();
+        for (let k = 0; k < this.planets.length; k++)
+            this.planets[k].refreshNew();
     }
 
     /**
@@ -135,7 +136,7 @@ class SystemOfPlanets {
      * @access public
      */
     output() {
-        for (var i = 0; i < this.planets.length; i++)
+        for (let i = 0; i < this.planets.length; i++)
             this.planets[i].output();
     }
 }
@@ -160,19 +161,50 @@ let body5 = new Planet(6.39e23, 2.492e11, 0, 0, 2.2e4, 5.32, 161, 37, 27); // Ma
 let body6 = new Planet(2.2e14, -8.766e10, 0, 0, 5.458e4, 2, 255, 255, 255); // Halley's comet
 
 
+function timeToString(secs) {
+    secs = Math.floor(secs);
+    let min = (secs - secs % 60) / 60;
+    let hr = (min - min % 60) / 60;
+    let ans = '';
+    if (hr > 0)
+        ans = hr + 'h ' + (min % 60) + 'min ' + (secs % 60) + 's';
+    else if (min > 0)
+        ans = min + 'min ' + (secs % 60) + 's';
+    else
+        ans = secs + 's';
+    return ans;
+}
+
+let font;
+let fontsize = 60;
+
+function preload() {
+    font = loadFont('../../assets/dotty/dotty.ttf');
+}
+
 function setup() {
     frameRate(FPS);
     createCanvas(1280, 720);
 
     noStroke();
     background(0);
+
+    textFont(font);
+    textSize(fontsize);
+    textAlign(LEFT);
 }
 
+let timePassed = 0;
+let framesPass = 0;
+
 function draw() {
-    background(0, 0, 0, 50);
+    background(0);
     translate(640, 360);
 
-    var solar = new SystemOfPlanets();
+    fill(255);
+    text('Time  ' + timeToString(timePassed), -610, -310);
+
+    let solar = new SystemOfPlanets();
     solar.addPlanet(body2); // Main 'Sun'
 
     solar.addPlanet(body1); // Rest
@@ -182,8 +214,19 @@ function draw() {
 
     solar.addPlanet(body6); // Halley's comet
 
-    for (var i = 0; i < FASTER * MULT; i++)
+    for (let i = 0; i < FASTER * MULT; i++)
         solar.refresh();
 
     solar.output();
+
+    if (++framesPass == FPS) {
+        timePassed++;
+        framesPass = 0;
+    }
 }
+
+!function() {
+    this.preload = preload;
+    this.setup = setup;
+    this.draw = draw;
+}();
