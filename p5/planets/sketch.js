@@ -8,7 +8,9 @@ const G = 6.67408e-11;
 /** Class representing a planet */
 class Planet {
     /**
-     * @constructor
+     * Constructor for Planet class
+     *
+     * @class
      * @param {number} m Mass of the planet
      * @param {number} x Initial x-coordinate of planet
      * @param {number} y Initial y-coordinate of planet
@@ -35,9 +37,10 @@ class Planet {
 
     /**
      * Function to find acceleration of planet w.r.t. another planet
+     *
      * @access protected
      * @param {Planet} b2 The planet w.r.t. we need to find acceleration
-     * @returns The acceleration vector wrt other planet
+     * @returns {Array} The acceleration vector wrt other planet
      */
     acc(b2) {
         let xDir = b2.x - this.x,
@@ -50,6 +53,7 @@ class Planet {
 
     /**
      * Function to keep in check the net acceleration on the planet
+     *
      * @access protected
      * @param {Planet} b2 The planet w.r.t. we need acceleration
      */
@@ -61,6 +65,7 @@ class Planet {
 
     /**
      * Refreshes the location of the planet for the given net acceleration value stored
+     *
      * @access protected
      */
     refreshNew() {
@@ -76,6 +81,7 @@ class Planet {
 
     /**
      * Prints out the the planet in the required location
+     *
      * @access public
      */
     output() {
@@ -98,7 +104,9 @@ class Planet {
 /** Class simulating a system of planets */
 class SystemOfPlanets {
     /**
-     * @constructor
+     * Constructor for SystemOfPLanets class
+     *
+     * @class
      */
     constructor() {
         /** @access protected */
@@ -106,7 +114,8 @@ class SystemOfPlanets {
     }
 
     /**
-     * Adds a planet to the system
+     * Function to add a planet to the system
+     *
      * @access public
      * @param {Planet} planet
      */
@@ -115,7 +124,8 @@ class SystemOfPlanets {
     }
 
     /**
-     * Refreshes the system of planets
+     * Function to refreshe the system of planets
+     *
      * @access public
      */
     refresh() {
@@ -133,6 +143,7 @@ class SystemOfPlanets {
 
     /**
      * Outputs every planet in system
+     *
      * @access public
      */
     output() {
