@@ -1,88 +1,48 @@
-const sz = 0;
-const x = 9;
-const pix_c = (1 << (2 * x));
-
-/**
- * Function to invert a set of directions
- *
- * @param {string} ins The directions to invert
- */
-function inverse(ins) {
-    let ans = '';
-    for (let i = 0; i < ins.length; i++) {
-        if (ins.charAt(i) == 'l')
-            ans += 'r';
-        else if (ins.charAt(i) == 'r')
-            ans += 'l';
-        else
-            ans += ins.charAt(i);
-    }
+function matrixTransform(mat, vec1, vecA) {
+    let ans = [0, 0];
+    ans[0] = mat[0][0] * vec1[0] + mat[0][1] * vec1[1] + vecA[0];
+    ans[1] = mat[1][0] * vec1[0] + mat[1][1] * vec1[1] + vecA[1];
     return ans;
 }
 
-/**
- * Function to give instruction to draw hilbert curve
- *
- * @param {number} level The level of hilbert curve
- * @returns {string} The instructions to draw hilbert curve
- */
-function hilbert(level) {
-    if (level === 0)
-        return '';
-
-    let temp = hilbert(level - 1);
-    let utemp = inverse(temp);
-    let ans = 'r' + utemp + 'lf' + temp + 'rfl' + temp + 'ufr' + utemp + 'r';
-    return ans;
-}
-
-let color = 0;
-
-/**
- * Function to draw based on instructions
- *
- * @param {string} ins Instruction to draw
- */
-function exec(ins) {
-    const step = (1 << sz) * 256 / (1 << x);
-    const dirs = [[0, -step], [step, 0], [0, step], [-step, 0]];
-    let at = 0;
-    let curr = [(1 << sz) * 128 / (1 << x), (1 << sz) * (512 - 128 / (1 << x))];
-    for (let i = 0; i < ins.length; i++) {
-        switch (ins.charAt(i)) {
-        case 'f':
-            stroke(64 * (color++)/pix_c, 32 * (color++)/pix_c, 16 * (color++)/pix_c);
-            line(curr[0], curr[1], curr[0] + dirs[at][0], curr[1] + dirs[at][1]);
-            curr[0] += dirs[at][0];
-            curr[1] += dirs[at][1];
-            break;
-
-        case 'r':
-            at = (at + 1) % 4;
-            break;
-
-        case 'l':
-            at = (at + 3) % 4;
-            break;
-
-        case 'u':
-            at = (at + 2) % 4;
-            break;
-
-        default:
-            break;
-        }
-    }
-}
-
+let mult = 1.2;
+let timeMult = 1;
 function setup() {
-    // console.log(hilbert(1));
-    // console.log(hilbert(2));
-    createCanvas((1 << sz) * 512, (1 << sz) * 512);
+    frameRate(60);
+    createCanvas(300 * mult, 600 * mult);
     background(255);
-    exec(hilbert(x + 1));
+    stroke(79, 121, 66);
+    strokeWeight(1);
+}
+
+let pos = [0, 0];
+
+function draw() {
+    translate(130 * mult, 550 * mult);
+    for (let i = 0; i < 100 * timeMult; i++) {
+        point((pos[0] * 50 * mult), -(pos[1] * 50 * mult));
+
+        let matr;
+        let add = [0.0, 1.6];
+
+        let rand = Math.random();
+        if (rand < 0.01) {
+            matr = [[0.0, 0.0], [0.0, 0.16]];
+            add = [0, 0];
+        } else if (rand < 0.86) {
+            matr = [[0.85, 0.04], [-0.04, 0.85]];
+        } else if (rand < 0.93) {
+            matr = [[0.2, -0.26], [0.23, 0.22]];
+        } else {
+            matr = [[-0.15, 0.28], [0.26, 0.24]];
+            add = [0.0, 0.44];
+        }
+
+        pos = matrixTransform(matr, pos, add);
+    }
 }
 
 !function() {
     this.setup = setup;
+    this.draw = draw;
 }();
