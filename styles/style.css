@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+/* Basic CSS */
+* {
+    box-sizing: border-box;
+}
+
+.main {
+    margin: 3em 15% 0 15%;
+}
+
+body {
+    margin: 0;
+    background-color: lightgoldenrodyellow;
+    color: darkgoldenrod;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.5vw;
+}
+
+h1.main-title {
+    color: goldenrod;
+}
+
+iframe {
+    border: none;
+}
+
+iframe#model-screen {
+    width: 100%;
+    height: 740px;
+}
+
+/* Blockquote */
+blockquote {
+    position: relative;
+}
+
+blockquote::before {
+    position: absolute;
+    content: open-quote;
+    font-size: 4em;
+    margin-left: -0.6em;
+    margin-top: -0.4em;
+}
+
+blockquote::after {
+    position: absolute;
+    content: close-quote;
+    font-size: 4em;
+    bottom: 0;
+    right: 0;
+    margin-right: -0.6em;
+    margin-bottom: -0.8em;
+}
+
+button {
+    background-color: gold;
+    border: 1px solid darkgoldenrod;
+    color: darkgoldenrod;
+    width: 20%;
+    padding: 1%;
+    font-size: 65%;
+    text-decoration: none;
+}
+
+ol {
+    list-style-type: armenian;
+}
+
+ul {
+    list-style-type: none;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 0.05em solid darkgoldenrod;
+}
+
+th, td {
+    padding: 0.2em;
+}
+
+table.alter tr:nth-child(even) {
+    background-color: rgba(218, 165, 32, 0.1);
+}
+
+hr {
+    color: tomato;
+}
+
+/* Horizontal menu panel */
+ul.hpanel {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: burlywood;
+    font-family: 'PT Serif', serif;
+    display: inline-block;
+}
+
+ul.hpanel li {
+    float: left;
+}
+
+ul.hpanel li a {
+    display: block;
+    color: azure;
+    text-align: center;
+    padding: 0.75em;
+    text-decoration: none;
+}
+
+ul.hpanel li a:hover {
+    background-color: #444444;
+}
+
+/* Fixed navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    z-index: 500;
+}
+
+/* Header links */
+.link-head {
+    padding-top: 2em;
+    margin-top: -2em;
+    -webkit-background-clip: content-box;
+    background-clip: content-box;
+}
+
+/* File-specific */
+img#surprise-photo {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    border: none;
+}
+
+#time {
+    float: right;
+    font-size: 0.75em;
+}

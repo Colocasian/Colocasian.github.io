@@ -3,41 +3,164 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="./main.js" defer="defer">
-    </script>
-    <script>
-        function updateAnswer() {
-            var x = escape(document.getElementById('fib-calc').elements[0].value)
-            if (x.length != 0) {
-                var ans = fibLar(x)
-                ans = ans.split('')
-                ans = ans.reverse()
-                ans = ans.join('')
-                window.alert(ans)
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="A website" />
+    <meta name="author" content="Rishvic" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Don't look here!</title>
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="icon" href="images/favicon.ico" />
+    <script src="scripts/main.js"></script>
 </head>
 
-<body>
-    Hello World!
-
-    <form id="fib-calc">
-        <h3>Fibonacci calculator</h3>
-        <p>
-            <label>Fibonacci number index</label>
-            <input type="number" />
-            <button onclick="updateAnswer()">Calculate</button><br />
-        </p>
-    </form>
-    <p>
-        Here's a <a href="./blogpage.html">link</a> to my 'blogpage'.<br />
-        Here's a <a href="./p5/planets/index.html">link</a> to my Rocky Planets exhibit.<br />
-        Here's a <a href="./p5/barnsley/index.html">link</a> to my Barnsley Fern
-    </p>
+<body onload="timeShow();">
+    <nav>
+        <ul class="hpanel navbar" id="top-navbar">
+            <li><a href="#">Top</a></li>
+            <li><a href="#lists-head">Lists</a></li>
+            <li><a href="#gates-head">Gates</a></li>
+            <li><a href="#tables-head">Tables</a></li>
+            <li><a href="#model-head">Models</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+        <h1 class="main-title">Hello</h1>
+        <p>So this is my new website, do you like it guys?</p>
+        <hr />
+        <section id="lists">
+            <h2 id="lists-head" class="link-head">Lists</h2>
+            You can go:
+            <ol id="site-links">
+                <li><a href="https://www.google.com" target="_blank">Here</a></li>
+                <li><a href="https://www.youtube.com" target="_blank">Or here</a></li>
+            </ol>
+            <br />
+            Here are salutations in a bunch of languages:
+            <ul id="salutations">
+                <li>Hello</li>
+                <li lang="hi">नमस्ते</li>
+                <li lang="ta">வணக்கம்</li>
+                <li lang="fr">Salut</li>
+                <li lang="ja">こんにちは</li>
+                <li lang="zh-Hans">你好</li>
+            </ul>
+        </section>
+        <button id="surprise-button" onclick="surprise();">
+            Press me to do nothing
+        </button>
+        <br />
+        <img id="surprise-photo" src="images/smiley.png" alt="Smiley" />
+        <hr />
+        <section id="gates-pancakes">
+            <h2 id="gates-head" class="link-head">Bill Gates and Pancakes</h2>
+            <article>
+                <h3>Gates' Research</h3>
+                <p>
+                    Now, let me tell you a little something about a guy called Bill Gates. Many people know him as the
+                    guy who started <em>Microsoft</em>. But not many people know about his passion for pancake flipping.
+                    He is so into it that he even authored a research paper for an algorithm for optimal pancake
+                    flipping. The problem that he attempted, as described in the paper, was:
+                </p>
+                <blockquote
+                    cite="https://people.eecs.berkeley.edu/~christos/papers/Bounds%20For%20Sorting%20By%20Prefix%20Reversal.pdf">
+                    The chef in our place is sloppy, and when he prepares to deliver a stack of pancakes they come out
+                    all different sizes. Therefore, when I deliver them to a customer, on the way to the table I
+                    rearrange them (so that the smallest winds up on top, and so on, down to the largest at the bottom)
+                    by grabbing several from the top and flipping them over, repeating this (varying the number I flip)
+                    as many times as necessary. If there are <var>n</var> pancakes, what is the maximum number of flips
+                    (as a function <var>f(n)</var> of <var>n</var>) that I will ever have to use to rearrange them?
+                </blockquote>
+                <p>
+                    I found his paper, weirdly enough in the archives of
+                    <abbr title="University of California, Berkeley">UCB</abbr>, even though he never studied there.
+                </p>
+            </article>
+        </section>
+        <hr />
+        <section id="tables">
+            <h2 id="tables-head" class="link-head">Tables</h2>
+            Here is some information presented in tabular form:
+            <table class="alter">
+                <caption>Population Info of Certain Countries</caption>
+                <tr>
+                    <th>Country</th>
+                    <th>Population</th>
+                    <th>Area (km<sup>2</sup>)</th>
+                    <th>Population Density</th>
+                    <th>Birth rate</th>
+                    <th>Death rate</th>
+                </tr>
+                <tr>
+                    <td>China</td>
+                    <td>1,427,647,786</td>
+                    <td>9,706,961</td>
+                    <td>147/km<sup>2</sup></td>
+                    <td>13.3</td>
+                    <td>7.2</td>
+                </tr>
+                <tr>
+                    <td>India</td>
+                    <td>1,352,642,280</td>
+                    <td>3,287,590</td>
+                    <td>411/km<sup>2</sup></td>
+                    <td>20.4</td>
+                    <td>7.9</td>
+                </tr>
+                <tr>
+                    <td>United States</td>
+                    <td>327,096,265</td>
+                    <td>9,372,610</td>
+                    <td>35/km<sup>2</sup></td>
+                    <td>13.2</td>
+                    <td>8.4</td>
+                </tr>
+                <tr>
+                    <td>Indonesia</td>
+                    <td>267,670,543</td>
+                    <td>1,904,569</td>
+                    <td>141/km<sup>2</sup></td>
+                    <td>18.8</td>
+                    <td>6.2</td>
+                </tr>
+                <tr>
+                    <td>Pakistan</td>
+                    <td>212,228,286</td>
+                    <td>881,912</td>
+                    <td>241/km<sup>2</sup></td>
+                    <td>25.2</td>
+                    <td>7.3</td>
+                </tr>
+            </table>
+        </section>
+        <hr />
+        <section id="models">
+            <h2 id="model-head" class="link-head">Models of Interesting Stuff</h2>
+            <p>
+                Here, I'll include an Iframe to two of my projects: One is a model of the rocky planets of the solar
+                system and other is a <a href="https://en.wikipedia.org/wiki/Barnsley_fern" title="Barnsley fern Wiki"
+                    target="_blank">Barnsley Fern</a>. Click the button to view the respective model.<br />
+            </p>
+            <ul class="hpanel">
+                <li><a href="https://colocasian.github.io/p5/planets/index.html" target="model-frame">Solar System</a>
+                </li>
+                <li><a href="https://colocasian.github.io/p5/barnsley/index.html" target="model-frame">Barnsley Fern</a>
+                </li>
+                <li><a href="about:blank" target="model-frame">Clear</a>
+                </li>
+            </ul>
+            <br />
+            <iframe id="model-screen" name="model-frame"></iframe>
+        </section>
+    </div>
+    <footer>
+        <div id="time"></div>
+        <div>
+            <h6>Icons made by <a href="https://www.flaticon.com/authors/freepik" target="_blank"
+                    title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" target="_blank"
+                    title="Flaticon">www.flaticon.com</a></h6>
+        </div>
+    </footer>
 </body>
 
 </html>
