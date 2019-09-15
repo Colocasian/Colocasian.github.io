@@ -17,17 +17,22 @@ body {
     font-size: 1.5vw;
 }
 
+@media screen and (max-width: 768px) {
+    .main {
+        margin: 3em 10% 0 10%;
+    }
+
+    body {
+        font-size: 120%;
+    }
+
+    table {
+        font-size: 67%;
+    }
+}
+
 h1.main-title {
     color: goldenrod;
-}
-
-iframe {
-    border: none;
-}
-
-iframe#model-screen {
-    width: 100%;
-    height: 740px;
 }
 
 /* Blockquote */
@@ -91,6 +96,15 @@ table.alter tr:nth-child(even) {
 
 hr {
     color: tomato;
+}
+
+iframe {
+    border: none;
+}
+
+#models iframe {
+    height: 740px;
+    width: 100%;
 }
 
 /* Horizontal menu panel */
