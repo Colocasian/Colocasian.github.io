@@ -1,0 +1,62 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[0],{
+
+/***/ "../../Rust/planete-wasm/pkg/planete_wasm.js":
+/*!**************************************************************************!*\
+  !*** /home/rishvic/Documents/Code/Rust/planete-wasm/pkg/planete_wasm.js ***!
+  \**************************************************************************/
+/*! exports provided: PlanetSystem, __wbindgen_throw */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./planete_wasm_bg.wasm */ \"../../Rust/planete-wasm/pkg/planete_wasm_bg.wasm\");\n/* harmony import */ var _planete_wasm_bg_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./planete_wasm_bg.js */ \"../../Rust/planete-wasm/pkg/planete_wasm_bg.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"PlanetSystem\", function() { return _planete_wasm_bg_js__WEBPACK_IMPORTED_MODULE_1__[\"PlanetSystem\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"__wbindgen_throw\", function() { return _planete_wasm_bg_js__WEBPACK_IMPORTED_MODULE_1__[\"__wbindgen_throw\"]; });\n\n\n\n\n//# sourceURL=webpack:////home/rishvic/Documents/Code/Rust/planete-wasm/pkg/planete_wasm.js?");
+
+/***/ }),
+
+/***/ "../../Rust/planete-wasm/pkg/planete_wasm_bg.js":
+/*!*****************************************************************************!*\
+  !*** /home/rishvic/Documents/Code/Rust/planete-wasm/pkg/planete_wasm_bg.js ***!
+  \*****************************************************************************/
+/*! exports provided: PlanetSystem, __wbindgen_throw */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PlanetSystem\", function() { return PlanetSystem; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"__wbindgen_throw\", function() { return __wbindgen_throw; });\n/* harmony import */ var _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./planete_wasm_bg.wasm */ \"../../Rust/planete-wasm/pkg/planete_wasm_bg.wasm\");\n\n\nconst lTextDecoder = typeof TextDecoder === 'undefined' ? (0, module.require)('util').TextDecoder : TextDecoder;\n\nlet cachedTextDecoder = new lTextDecoder('utf-8', { ignoreBOM: true, fatal: true });\n\ncachedTextDecoder.decode();\n\nlet cachegetUint8Memory0 = null;\nfunction getUint8Memory0() {\n    if (cachegetUint8Memory0 === null || cachegetUint8Memory0.buffer !== _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"memory\"].buffer) {\n        cachegetUint8Memory0 = new Uint8Array(_planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"memory\"].buffer);\n    }\n    return cachegetUint8Memory0;\n}\n\nfunction getStringFromWasm0(ptr, len) {\n    return cachedTextDecoder.decode(getUint8Memory0().subarray(ptr, ptr + len));\n}\n\nlet cachegetInt32Memory0 = null;\nfunction getInt32Memory0() {\n    if (cachegetInt32Memory0 === null || cachegetInt32Memory0.buffer !== _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"memory\"].buffer) {\n        cachegetInt32Memory0 = new Int32Array(_planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"memory\"].buffer);\n    }\n    return cachegetInt32Memory0;\n}\n/**\n* Struct simulating a system of planets.\n*/\nclass PlanetSystem {\n\n    static __wrap(ptr) {\n        const obj = Object.create(PlanetSystem.prototype);\n        obj.ptr = ptr;\n\n        return obj;\n    }\n\n    free() {\n        const ptr = this.ptr;\n        this.ptr = 0;\n\n        _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"__wbg_planetsystem_free\"](ptr);\n    }\n    /**\n    * Instantiates a PlanetSystem.\n    * @returns {PlanetSystem}\n    */\n    static new() {\n        var ret = _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"planetsystem_new\"]();\n        return PlanetSystem.__wrap(ret);\n    }\n    /**\n    * Method to add a planet to the system.\n    * @param {number} m\n    * @param {number} x\n    * @param {number} y\n    * @param {number} init_vx\n    * @param {number} init_vy\n    */\n    add_planet(m, x, y, init_vx, init_vy) {\n        _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"planetsystem_add_planet\"](this.ptr, m, x, y, init_vx, init_vy);\n    }\n    /**\n    * Method to refresh the system of planets one frame\n    */\n    refresh() {\n        _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"planetsystem_refresh\"](this.ptr);\n    }\n    /**\n    * Outputs every planet in a list of string.\n    * @returns {string}\n    */\n    output() {\n        try {\n            const retptr = _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"__wbindgen_export_0\"].value - 16;\n            _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"__wbindgen_export_0\"].value = retptr;\n            _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"planetsystem_output\"](retptr, this.ptr);\n            var r0 = getInt32Memory0()[retptr / 4 + 0];\n            var r1 = getInt32Memory0()[retptr / 4 + 1];\n            return getStringFromWasm0(r0, r1);\n        } finally {\n            _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"__wbindgen_export_0\"].value += 16;\n            _planete_wasm_bg_wasm__WEBPACK_IMPORTED_MODULE_0__[\"__wbindgen_free\"](r0, r1);\n        }\n    }\n}\n\nconst __wbindgen_throw = function(arg0, arg1) {\n    throw new Error(getStringFromWasm0(arg0, arg1));\n};\n\n\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../Web/solar-planete-wasm/node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack:////home/rishvic/Documents/Code/Rust/planete-wasm/pkg/planete_wasm_bg.js?");
+
+/***/ }),
+
+/***/ "../../Rust/planete-wasm/pkg/planete_wasm_bg.wasm":
+/*!*******************************************************************************!*\
+  !*** /home/rishvic/Documents/Code/Rust/planete-wasm/pkg/planete_wasm_bg.wasm ***!
+  \*******************************************************************************/
+/*! exports provided: memory, __wbg_planetsystem_free, planetsystem_new, planetsystem_add_planet, planetsystem_refresh, planetsystem_output, __wbindgen_export_0, __wbindgen_free */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("\"use strict\";\n// Instantiate WebAssembly module\nvar wasmExports = __webpack_require__.w[module.i];\n__webpack_require__.r(exports);\n// export exports from WebAssembly module\nfor(var name in wasmExports) if(name != \"__webpack_init__\") exports[name] = wasmExports[name];\n// exec imports from WebAssembly module (for esm order)\n/* harmony import */ var m0 = __webpack_require__(/*! ./planete_wasm_bg.js */ \"../../Rust/planete-wasm/pkg/planete_wasm_bg.js\");\n\n\n// exec wasm module\nwasmExports[\"__webpack_init__\"]()\n\n//# sourceURL=webpack:////home/rishvic/Documents/Code/Rust/planete-wasm/pkg/planete_wasm_bg.wasm?");
+
+/***/ }),
+
+/***/ "./index.js":
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var papaparse__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! papaparse */ \"./node_modules/papaparse/papaparse.min.js\");\n/* harmony import */ var papaparse__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(papaparse__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var planete_wasm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! planete-wasm */ \"../../Rust/planete-wasm/pkg/planete_wasm.js\");\n/* harmony import */ var _scripts_Queue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scripts/Queue */ \"./scripts/Queue.js\");\n/*\n * Copyright 2020 Rishvic Pushpakaran\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n\n\n\n\n\nconst scale_down = 7e8;\n\nconst canvas = document.getElementById(\"planet-canvas\");\nconst ctx = canvas.getContext(\"2d\");\nconst canvas_width = 1280;\nconst canvas_height = 720;\n\nconst system = planete_wasm__WEBPACK_IMPORTED_MODULE_1__[\"PlanetSystem\"].new();\n\nsystem.add_planet(5.972e24, 1.52e11, 0, 0, 2.929e4); // Earth\nsystem.add_planet(1.989e30, 0, 0, 0, 0); // Sun\nsystem.add_planet(4.867e24, 1.08939e11, 0, 0, 3.478e4); // Venus\nsystem.add_planet(3.285e23, 6.98169e10, 0, 0, 3.886e4); // Mercury\nsystem.add_planet(6.39e23, 2.492e11, 0, 0, 2.2e4); // Mars\nsystem.add_planet(2.2e14, -8.766e10, 0, 0, 5.458e4); // Halley's comet\n\nconst radii = [5, 15, 4.75, 1.915, 2.66, 1];\nconst colors = [\"#0077be\", \"#fdb813\", \"#bbb7ab\", \"#e2e2e2\", \"#a1251b\", \"#fff\"];\n\nconst drawPlanets = () => {\n  ctx.fillStyle = \"#000\";\n  ctx.fillRect(0, 0, canvas_width, canvas_height);\n\n  papaparse__WEBPACK_IMPORTED_MODULE_0___default.a.parse(system.output(), {\n    header: false,\n    fastMode: true,\n    skipEmptyLines: true,\n  }).data.forEach((planet, idx) => {\n    ctx.fillStyle = colors[idx];\n    ctx.beginPath();\n    ctx.arc(\n      parseFloat(planet[0]) / scale_down + canvas_width / 2,\n      parseFloat(planet[1]) / scale_down + canvas_height / 2,\n      radii[idx],\n      0,\n      2 * Math.PI\n    );\n    ctx.fill();\n  });\n};\n\nconst renderLoop = () => {\n  drawPlanets();\n  system.refresh();\n  requestAnimationFrame(renderLoop);\n};\n\ndrawPlanets();\nsystem.refresh();\nrequestAnimationFrame(renderLoop);\n\n\n//# sourceURL=webpack:///./index.js?");
+
+/***/ }),
+
+/***/ "./scripts/Queue.js":
+/*!**************************!*\
+  !*** ./scripts/Queue.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Queue; });\n/*\n * Copyright 2020 Rishvic Pushpakaran\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n\nclass Queue {\n  constructor(max_sz) {\n    this.queue = [];\n    this.queue.length = max_sz;\n    this.max_sz = max_sz;\n    this.beg_idx = 0;\n    this.end_idx = 0;\n  }\n\n  empty() {\n    return this.beg_idx === this.end_idx;\n  }\n\n  length() {\n    return this.end_idx - this.beg_idx;\n  }\n\n  push(item) {\n    if (this.end_idx - this.beg_idx !== this.max_sz) {\n      this.queue[this.end_idx++ % this.max_sz] = item;\n    }\n  }\n\n  popFront() {\n    if (this.beg_idx !== this.end_idx) {\n      queue[this.beg_idx++ % this.max_sz] = null;\n      if (this.beg_idx === this.max_sz) {\n        this.beg_idx = 0;\n        this.end_idx -= this.max_sz;\n      }\n    }\n  }\n\n  forEach(fn) {\n    for (i = this.beg_idx; i !== this.end_idx; i++) {\n      fn(this.queue[i % this.max_sz], i - this.beg_idx);\n    }\n  }\n}\n\n\n//# sourceURL=webpack:///./scripts/Queue.js?");
+
+/***/ })
+
+}]);
